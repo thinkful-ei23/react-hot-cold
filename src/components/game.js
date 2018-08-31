@@ -14,7 +14,10 @@ export default class Game extends React.Component {
       count: 0,
       modal: false,
       answer: Math.floor(Math.random() * 100) + 1,
-      feedback: 'Guess, fool!'
+      feedback: {
+        message: 'Guess, fool!',
+        color: 'gray'
+      }
     };
   }
 
@@ -29,39 +32,58 @@ export default class Game extends React.Component {
       guesses: [...this.state.guesses, this.state.guess]
     });
     let difference = Math.abs(this.state.guess - this.state.answer);
-
+    let feedback = {};
     if (difference < 10 && difference > 0) {
-      this.setState({
-        feedback: 'You so hot, baby! We cooking now!'
-      });
-      document.getElementById('feedback').style.backgroundColor = '#d13065';
+      feedback = {
+        ...feedback,
+        message: 'You so hot, baby! We cooking now!',
+        color: '#d13065'
+      };
     } else if (difference === 0) {
-      this.setState({
-        feedback:
-          "Momma didn't raise no fool! You've won! Time to enjoy some spicy jumbilaya!"
-      });
-      document.getElementById('feedback').style.backgroundColor = 'red';
+      feedback = Object.assign(
+        {},
+        {
+          message:
+            "Momma didn't raise no fool! You've won! Time to enjoy some spicy jumbilaya!",
+          color: 'red'
+        }
+      );
     } else if (difference >= 10 && difference < 20) {
-      this.setState({
-        feedback: "You've found the matches! Now build a fire!"
-      });
-      document.getElementById('feedback').style.backgroundColor = '#5710b5';
+      feedback = Object.assign(
+        {},
+        {
+          message: "You've found the matches! Now build a fire!",
+          color: '#5710b5'
+        }
+      );
     } else if (difference >= 20 && difference < 30) {
-      this.setState({
-        feedback: "You're oven has broken! Lukewarm soup all around!"
-      });
-      document.getElementById('feedback').style.backgroundColor = '#37b23b';
+      feedback = Object.assign(
+        {},
+        {
+          message: "You're oven has broken! Lukewarm soup all around!",
+          color: '#37b23b'
+        }
+      );
     } else if (difference >= 30 && difference < 40) {
-      this.setState({
-        feedback: 'No soup for you! Back in the cold you go!'
-      });
-      document.getElementById('feedback').style.backgroundColor = '#ceb744';
+      feedback = Object.assign(
+        {},
+        {
+          message: 'No soup for you! Back in the cold you go!',
+          color: '#ceb744'
+        }
+      );
     } else {
-      this.setState({
-        feedback: "Please, sir, some soup? It's cold out here."
-      });
-      document.getElementById('feedback').style.backgroundColor = '#0077ff';
+      feedback = Object.assign(
+        {},
+        {
+          message: "Please, sir, some soup? It's cold out here.",
+          color: '#0077ff'
+        }
+      );
     }
+    this.setState({
+      feedback
+    });
     e.target.reset();
   }
 
