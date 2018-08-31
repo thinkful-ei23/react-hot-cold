@@ -40,46 +40,36 @@ export default class Game extends React.Component {
         color: '#d13065'
       };
     } else if (difference === 0) {
-      feedback = Object.assign(
-        {},
-        {
-          message:
-            "Momma didn't raise no fool! You've won! Time to enjoy some spicy jumbilaya!",
-          color: 'red'
-        }
-      );
+      feedback = {
+        ...feedback,
+        message:
+          "Momma didn't raise no fool! You've won! Time to enjoy some spicy jumbilaya!",
+        color: 'red'
+      };
     } else if (difference >= 10 && difference < 20) {
-      feedback = Object.assign(
-        {},
-        {
-          message: "You've found the matches! Now build a fire!",
-          color: '#5710b5'
-        }
-      );
+      feedback = {
+        ...feedback,
+        message: "You've found the matches! Now build a fire!",
+        color: '#5710b5'
+      };
     } else if (difference >= 20 && difference < 30) {
-      feedback = Object.assign(
-        {},
-        {
-          message: "You're oven has broken! Lukewarm soup all around!",
-          color: '#37b23b'
-        }
-      );
+      feedback = {
+        ...feedback,
+        message: "You're oven has broken! Lukewarm soup all around!",
+        color: '#37b23b'
+      };
     } else if (difference >= 30 && difference < 40) {
-      feedback = Object.assign(
-        {},
-        {
-          message: 'No soup for you! Back in the cold you go!',
-          color: '#ceb744'
-        }
-      );
+      feedback = {
+        ...feedback,
+        message: 'No soup for you! Back in the cold you go!',
+        color: '#ceb744'
+      };
     } else {
-      feedback = Object.assign(
-        {},
-        {
-          message: "Please, sir, some soup? It's cold out here.",
-          color: '#0077ff'
-        }
-      );
+      feedback = {
+        ...feedback,
+        message: "Please, sir, some soup? It's cold out here.",
+        color: '#0077ff'
+      };
     }
     this.setState({
       feedback
